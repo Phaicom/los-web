@@ -1,10 +1,8 @@
 <template>
-  <v-app id="main">
-    <v-main>
-      <AppLayout>
-        <router-view />
-      </AppLayout>
-    </v-main>
+  <v-app id="app">
+    <AppLayout>
+      <router-view />
+    </AppLayout>
   </v-app>
 </template>
 
@@ -21,14 +19,14 @@ export default {
     const route = useRoute();
     const isLoggedin = computed(() => store.state.isLoggedin);
 
-    watchEffect(() => {
-      const name = route.name;
-      if (isLoggedin.value && name === "Login") {
-        router.push("/");
-      } else if (!isLoggedin.value && name !== "Login") {
-        router.push("/login");
-      }
-    });
+    // watchEffect(() => {
+    //   const name = route.name;
+    //   if (isLoggedin.value && name === "Login") {
+    //     router.push("/");
+    //   } else if (!isLoggedin.value && name !== "Login") {
+    //     router.push("/login");
+    //   }
+    // });
 
     return {};
   },
@@ -36,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#main {
+#app {
   min-height: 100vh;
 }
 </style>

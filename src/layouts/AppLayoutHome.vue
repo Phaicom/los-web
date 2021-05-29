@@ -1,8 +1,10 @@
 <template>
   <div>
-    <header class="header" />
-    <AppLayoutLinks />
-    <slot />
+    <AppLayoutLinks>
+      <v-container fluid>
+        <slot />
+      </v-container>
+    </AppLayoutLinks>
   </div>
 </template>
 
@@ -13,10 +15,3 @@ export default {
   components: { AppLayoutLinks },
 };
 </script>
-
-<style scoped>
-.header {
-  height: 5rem;
-  background-color: blue;
-}
-</style>
