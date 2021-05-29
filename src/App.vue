@@ -1,30 +1,42 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <v-app id="main">
+    <v-main>
+      <AppLayout>
+        <router-view />
+      </AppLayout>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { computed, watchEffect } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { useStore } from "vuex";
 
-#nav {
-  padding: 30px;
+export default {
+  name: "App",
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+    const route = useRoute();
+    const isLoggedin = computed(() => store.state.isLoggedin);
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    watchEffect(() => {
+      const name = route.name;
+      if (isLoggedin.value && name === "Login") {
+        router.push("/");
+      } else if (!isLoggedin.value && name !== "Login") {
+        router.push("/login");
+      }
+    });
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+    return {};
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+#main {
+  min-height: 100vh;
 }
 </style>
