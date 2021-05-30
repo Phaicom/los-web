@@ -4,6 +4,8 @@ Simple Store application written in Vue
 
 ## Usage
 
+Duplicate **.env.example** file in the project's root directory and rename it to **.env**. After that, make the changes to the values in this file.
+
 ```
 yarn
 
