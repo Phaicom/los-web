@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import { product } from "./modules/store";
 
 export default createStore({
   state: { isLoggedin: false, username: "" },
@@ -20,5 +21,5 @@ export default createStore({
       commit("setIsLoggedin", false);
     },
   },
-  modules: {},
+  modules: { product },
 });

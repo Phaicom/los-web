@@ -5,16 +5,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
 import Login from "../components/Login.vue";
 
-export default defineComponent({
+export default {
   name: "Home",
 
   components: {
     Login,
   },
-});
+};
 </script>
 
 <style lang="scss" scoped>

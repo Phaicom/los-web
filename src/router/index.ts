@@ -17,6 +17,14 @@ const routes: Array<RouteRecordRaw> = [
       layout: "AppLayoutHome",
     },
   },
+  {
+    path: "/list",
+    name: "List",
+    component: () => import("../views/List.vue"),
+    meta: {
+      layout: "AppLayoutHome",
+    },
+  },
 ];
 
 const router = createRouter({

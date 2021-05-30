@@ -1,5 +1,5 @@
 <template>
-  <v-app id="app">
+  <v-app id="body">
     <AppLayout>
       <router-view />
     </AppLayout>
@@ -34,7 +34,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#app {
+#body {
   min-height: 100vh;
+  max-width: 1440px;
+  display: flex;
+  margin: 0 auto;
 }
 </style>

@@ -12,7 +12,6 @@ import { useStore } from "vuex";
 import Firework from "@/components/animation/Firework.vue";
 
 export default {
-  name: "App",
   components: {
     Firework,
   },

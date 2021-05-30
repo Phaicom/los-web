@@ -84,7 +84,12 @@ export default {
   },
 };
 </script>
-
+<style lang="scss">
+.v-navigation-drawer {
+  box-shadow: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+</style>
 <style lang="scss" scoped>
 #nav {
   .toggle__button {
@@ -110,12 +115,16 @@ export default {
       padding: 0 30px;
     }
 
+    div {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 8px 0;
+    }
+
     a {
       text-decoration: none;
       font-size: 1.5rem;
       line-height: 1.5;
-      color: #231f20;
-      font-weight: bold;
+      color: #363636;
 
       &.router-link-exact-active {
         color: rgb(var(--v-theme-primary));
