@@ -42,14 +42,6 @@ export default {
     onMounted(() => {
       items.value = [
         {
-          title: "Home",
-          path: "/",
-        },
-        {
-          title: "Login",
-          path: "/login",
-        },
-        {
           title: "Product",
           path: "/product",
         },

@@ -1,24 +1,19 @@
-# los-web
+# LOS-WEB
 
-## Project setup
-```
-yarn install
-```
+Simple Store application written in Vue
 
-### Compiles and hot-reloads for development
+## Usage
+
 ```
+yarn
+
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## Author
 
-### Lints and fixes files
-```
-yarn lint
-```
+[Phaicom](https://github.com/Phaicom)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

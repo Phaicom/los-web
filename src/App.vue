@@ -19,14 +19,14 @@ export default {
     const route = useRoute();
     const isLoggedin = computed(() => store.state.isLoggedin);
 
-    // watchEffect(() => {
-    //   const name = route.name;
-    //   if (isLoggedin.value && name === "Login") {
-    //     router.push("/");
-    //   } else if (!isLoggedin.value && name !== "Login") {
-    //     router.push("/login");
-    //   }
-    // });
+    watchEffect(() => {
+      const name = route.name;
+      if (isLoggedin.value && name === "Login") {
+        router.push("/");
+      } else if (!isLoggedin.value && name !== "Login") {
+        router.push("/login");
+      }
+    });
 
     return {};
   },
