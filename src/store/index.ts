@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import { product } from "./modules/product";
+import { stock } from "./modules/stock";
 
 export default createStore({
   state: { isLoggedin: false, username: "" },
@@ -21,5 +22,5 @@ export default createStore({
       commit("setIsLoggedin", false);
     },
   },
-  modules: { product },
+  modules: { product, stock },
 });

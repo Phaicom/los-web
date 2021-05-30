@@ -3,3 +3,8 @@ export type Stock = {
   productId: string;
   amount: number;
 };
+
+export type StockDto = {
+  productId: string;
+  amount: number;
+};

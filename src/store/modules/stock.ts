@@ -1,27 +1,27 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import axios from "axios";
 import { Commit, Dispatch } from "vuex";
-import { Product, ProductDto } from "@/models/product";
+import { Stock, StockDto } from "@/models/stock";
 
 const url = process.env.VUE_APP_API_URL;
 
-export const product = {
+export const stock = {
   namespaced: true,
-  state: { products: [] as Product[] },
+  state: { stocks: [] as Stock[] },
   mutations: {
-    setProducts(state: { products: Product[] }, value: Product[]) {
-      state.products = value;
+    setStocks(state: { stocks: Stock[] }, value: Stock[]) {
+      state.stocks = value;
     },
   },
   actions: {
     async GetAll({ commit }: { commit: Commit }) {
-      const { data: products } = await axios.get(url + "products");
-      commit("setProducts", products);
+      const { data: stocks } = await axios.get(url + "stocks");
+      commit("setStocks", stocks);
     },
-    async Create({ dispatch }: { dispatch: Dispatch }, productDto: ProductDto) {
+    async Create({ dispatch }: { dispatch: Dispatch }, stockDto: StockDto) {
       try {
-        await axios.post(url + "products", productDto);
-        dispatch("GetAll");
+        await axios.post(url + "stocks", stockDto);
+        dispatch("product/GetAll", null, { root: true });
         return { error: null };
       } catch (error) {
         return { error: error.response.status };
@@ -29,8 +29,8 @@ export const product = {
     },
     async Delete({ dispatch }: { dispatch: Dispatch }, id: string) {
       try {
-        await axios.delete(url + "products/" + id);
-        dispatch("GetAll");
+        await axios.delete(url + "stocks/" + id);
+        dispatch("product/GetAll", null, { root: true });
         return { error: null };
       } catch (error) {
         return { error: error.response.status };
@@ -38,11 +38,11 @@ export const product = {
     },
     async Edit(
       { dispatch }: { dispatch: Dispatch },
-      { id, productDto }: { id: string; productDto: ProductDto }
+      { id, stockDto }: { id: string; stockDto: StockDto }
     ) {
       try {
-        await axios.put(url + "products/" + id, productDto);
-        dispatch("GetAll");
+        await axios.put(url + "stocks/" + id, stockDto);
+        dispatch("product/GetAll", null, { root: true });
         return { error: null };
       } catch (error) {
         return { error: error.response.status };
