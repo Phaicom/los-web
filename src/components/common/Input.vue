@@ -28,7 +28,7 @@ export default {
       default: "text",
     },
     parentValue: {
-      type: String,
+      type: [Number, String],
       default: "",
     },
   },
@@ -39,7 +39,7 @@ export default {
 
     onMounted(() => {
       if (props.parentValue) {
-        this.id.value = props.parentValue;
+        id.value = props.parentValue;
         onEnter();
       }
     });

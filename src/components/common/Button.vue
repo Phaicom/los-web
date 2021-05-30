@@ -1,10 +1,9 @@
 <template>
   <button
     class="common__button"
-    :class="{ muted: isMuted }"
+    :class="{ '--muted': isMuted, '--transparent': transparent }"
     :disabled="isMuted"
     type="button"
-    @click.prevent="onClick"
   >
     <slot></slot>
   </button>
@@ -12,11 +11,11 @@
 <script>
 export default {
   props: {
-    onClick: {
-      type: Function,
-      require: true,
-    },
     isMuted: {
+      type: Boolean,
+      default: false,
+    },
+    transparent: {
       type: Boolean,
       default: false,
     },
@@ -35,8 +34,18 @@ export default {
   font-size: 0.875rem;
   font-weight: 600;
 
-  &.muted {
-    background-color: #8a8a8a;
+  &:active {
+    background-color: rgba(var(--v-theme-primary), 0.95);
+  }
+
+  &.--transparent {
+    background-color: rgba(var(--v-theme-primary), 0.1);
+    box-shadow: none;
+    color: rgb(var(--v-theme-primary));
+  }
+
+  &.--muted {
+    background-color: #8a8a8a !important;
   }
 }
 </style>

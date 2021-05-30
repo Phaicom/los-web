@@ -13,7 +13,7 @@
       :parentValue="username"
       @input-change="onInput"
     />
-    <Button :onClick="submit">Submit</Button>
+    <Button @click.prevent="submit">Submit</Button>
   </div>
 </template>
 

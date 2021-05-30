@@ -3,7 +3,7 @@
     <div class="product-tumb">
       <img :src="product.imageUrl" :alt="product.name" />
       <div class="product-details">
-        <h4>{{ product.name }}</h4>
+        <h4>{{ name }}</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero,
           possimus nostrum!
@@ -30,6 +30,7 @@
 <script lang="ts">
 import { Product } from "@/models/product";
 import { computed } from "vue";
+import { currencyFormatter, cardTextFormatter } from "@/helpers/formatHelper";
 
 export default {
   props: {
@@ -39,13 +40,12 @@ export default {
     },
   },
   setup(props: { product: Product }): unknown {
-    const formatter = new Intl.NumberFormat("th-TH", {
-      style: "currency",
-      currency: "THB",
+    const price = computed(() => currencyFormatter(props.product.price));
+    const name = computed(() => {
+      return cardTextFormatter(props.product.name);
     });
-    const price = computed(() => formatter.format(props.product.price));
 
-    return { price };
+    return { price, name };
   },
 };
 </script>
@@ -66,7 +66,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 500px;
     padding: 20px;
     background: #f0f0f0;
@@ -78,11 +78,14 @@ export default {
 
     .product-details {
       padding: 30px 30px 0 30px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
 
       h4 {
         font-weight: 500;
         display: block;
-        margin-bottom: 18px;
+        margin-bottom: auto;
         text-transform: uppercase;
         color: #363636;
         text-decoration: none;
@@ -103,7 +106,6 @@ export default {
       .product-bottom-details {
         overflow: hidden;
         border-top: 1px solid #eee;
-        padding-top: 20px;
 
         div {
           float: left;

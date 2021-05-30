@@ -18,6 +18,14 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
+    path: "/product",
+    name: "Product",
+    component: () => import("../views/Product.vue"),
+    meta: {
+      layout: "AppLayoutHome",
+    },
+  },
+  {
     path: "/list",
     name: "List",
     component: () => import("../views/List.vue"),

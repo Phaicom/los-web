@@ -7,3 +7,9 @@ export type Product = {
   price: number;
   stock: Stock;
 };
+
+export type ProductDto = {
+  name: string;
+  imageUrl: string;
+  price: number;
+};
